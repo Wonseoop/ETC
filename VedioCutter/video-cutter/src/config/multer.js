@@ -3,6 +3,8 @@ const { randomBytes } = require("crypto");
 const { resolve, extname } = require("path");
 const { createTemporaryFolder } = require("../useCases/CreateTemporaryFolder");
 
+//edit : 편집된 파일
+//raw : 편집할 파일
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         createTemporaryFolder.execute(true, 'raw', 'edited');
@@ -20,6 +22,7 @@ const storage = multer.diskStorage({
     }
 })
 
+//업로드 파일 필터링
 const fileFilter = (req, file, cb) => {
     const isAcceptable = [
         'video/mp4',
@@ -39,6 +42,7 @@ const fileFilter = (req, file, cb) => {
     return cb(null, false);
 }
 
+//속성 내보냄
 module.exports = {
     storage,
     fileFilter
