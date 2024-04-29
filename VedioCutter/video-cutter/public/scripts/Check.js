@@ -1,4 +1,5 @@
 class Check {
+    //비디오 작업 오류
     errorOnTruncate(errorMsg) {
         if(location.search.indexOf("?") !== 0 || !location.search) {
             return false;
@@ -8,6 +9,7 @@ class Check {
         return true;
     }
 
+    //비디오 작업 성공ㄴㄴ
     successfulOnTruncate(video) {
         if(location.href.includes("/cut/")) {
             const filepath = `/${atob(location.pathname.slice(5))}`;
