@@ -1,0 +1,17 @@
+#include <iostream>
+#include <cctype>
+
+bool isDigitSafe(char ch) {
+    if (static_cast<unsigned char>(ch) < 128) {
+        return std::isdigit(static_cast<unsigned char>(ch));
+    }
+    return false; // ASCII 범위 외 값은 false 반환
+}
+
+int main() {
+    std::string input = "5$한a";
+    for (char ch : input) {
+        std::cout << ch << ": " << isDigitSafe(ch) << "\n";
+    }
+    return 0;
+}
